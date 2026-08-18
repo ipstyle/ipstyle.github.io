@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ipstyle — native apps for Mac and iPhone</title>
+<meta name="description" content="Small, native apps for Mac and iPhone by Albert Frick: AI-Cockpit keeps every AI budget in one place, BarBox tidies up the menu bar. No accounts, no tracking — what can run locally, runs locally.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ipstyle — native apps for Mac and iPhone">
+<meta property="og:description" content="AI-Cockpit and BarBox on the Mac App Store. No accounts, no tracking.">
+<meta property="og:url" content="https://ipstyle.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg:#ffffff; --fg:#16181d; --muted:#5d636e; --line:#e3e6ea;
+    --card:#f7f8fa; --accent:#2e6be6; --accent-fg:#ffffff;
+    --strip:#ffffff; --strip-o:.72; --track:#c4cad3; --knock:#f7f8fa;
+    --hero1:#f7f8fa; --hero2:#eaeef4; --glow:.16;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#14161a; --fg:#e9eaee; --muted:#a0a6b0; --line:#2a2e36;
+            --card:#1c1f25; --accent:#5b8dfa; --accent-fg:#0d1016;
+            --strip:#0f1115; --strip-o:.55; --track:#3a4049; --knock:#14161a;
+            --hero1:#1c1f25; --hero2:#14161a; --glow:.22; }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font:16px/1.6 -apple-system, "Helvetica Neue", system-ui, sans-serif;
+         -webkit-font-smoothing: antialiased; }
+  .wrap { max-width:940px; margin:0 auto; padding:0 1.25rem; }
+  a { color:var(--accent); }
+
+  /* language toggle */
+  .lang { position:absolute; top:1rem; right:1.25rem; display:flex; gap:.25rem;
+          border:1px solid var(--line); border-radius:999px; padding:.2rem; background:var(--card); }
+  .lang button { border:0; background:none; color:var(--muted); font:600 .8rem/1 inherit;
+                 padding:.4rem .7rem; border-radius:999px; cursor:pointer; }
+  .lang button[aria-pressed="true"] { background:var(--accent); color:var(--accent-fg); }
+
+  /* hero */
+  header { position:relative; padding:3.5rem 0 2rem; }
+  .hero { display:block; width:100%; height:auto; border-radius:18px; overflow:hidden; }
+  .ring-fill { stroke-dasharray:69.1; stroke-dashoffset:69.1; animation:ringfill 1.4s .3s ease-out forwards; }
+  @keyframes ringfill { to { stroke-dashoffset:22.1; } }
+  @media (prefers-reduced-motion: reduce) { .ring-fill { animation:none; stroke-dashoffset:22.1; } }
+
+  .lede { font-size:1.2rem; color:var(--muted); text-align:center; max-width:34em;
+          margin:1.6rem auto 1.4rem; }
+  .badges { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.6rem; }
+  .badge { font-size:.8rem; color:var(--muted); border:1px solid var(--line);
+           border-radius:999px; padding:.25rem .8rem; }
+
+  /* sections */
+  section { padding:2.6rem 0; border-top:1px solid var(--line); }
+  h2 { font-size:1.5rem; letter-spacing:-.02em; margin:0 0 .4rem; }
+  .sub { color:var(--muted); margin:0 0 1.8rem; }
+
+  .grid { display:grid; gap:1.25rem; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); }
+  .app { background:var(--card); border:1px solid var(--line); border-radius:12px;
+         padding:1.5rem; display:flex; flex-direction:column;
+         transition:border-color .18s ease, transform .18s ease; }
+  .app:hover { border-color:var(--accent); transform:translateY(-2px); }
+  .app img.icon { width:76px; height:76px; border-radius:17px; display:block; margin-bottom:.9rem; }
+  .app h3 { font-size:1.25rem; margin:0 0 .15rem; }
+  .app .one { color:var(--muted); margin:0 0 1rem; }
+  .app ul { margin:0 0 1.2rem; padding-left:1.1rem; color:var(--muted); font-size:.94rem; }
+  .app ul li { margin-bottom:.3rem; }
+  .app .foot { margin-top:auto; }
+  .app .meta { font-size:.82rem; color:var(--muted); margin:.7rem 0 0; }
+  .mas { display:inline-block; }
+  .mas img { width:156px; height:auto; display:block; }
+
+  /* screenshots */
+  .shots { display:flex; gap:1rem; overflow-x:auto; padding-bottom:.6rem; scroll-snap-type:x mandatory; }
+  .shots figure { margin:0; flex:0 0 auto; scroll-snap-align:start; }
+  .shots img { height:340px; width:auto; border-radius:10px; border:1px solid var(--line); display:block; }
+  .shots figcaption { font-size:.8rem; color:var(--muted); margin-top:.5rem; }
+
+  /* workshop */
+  .soon { display:grid; gap:1.25rem; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); }
+  .soon img { width:100%; border-radius:12px; display:block; }
+  .soon h3 { font-size:1.1rem; margin:.9rem 0 .2rem; }
+  .soon p { color:var(--muted); font-size:.94rem; margin:0; }
+  .pill { display:inline-block; font-size:.72rem; font-weight:700; letter-spacing:.04em;
+          text-transform:uppercase; border-radius:999px; padding:.2rem .6rem; margin-left:.4rem;
+          background:var(--line); color:var(--muted); vertical-align:.12em; }
+
+  .cols { display:grid; gap:1.25rem 2rem; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); }
+  .cols h3 { font-size:1rem; margin:0 0 .3rem; }
+  .cols p { color:var(--muted); margin:0; font-size:.94rem; }
+
+  footer { border-top:1px solid var(--line); padding:2rem 0 3rem; color:var(--muted); font-size:.85rem; }
+  footer a { color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true">EN</button>
+    <button type="button" data-lang="de" aria-pressed="false">DE</button>
+  </div>
+
+  <svg class="hero" viewBox="0 0 1200 400" role="img" aria-label="ipstyle — native apps for Mac and iPhone"
+       xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="hg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="var(--hero1)"/><stop offset="1" stop-color="var(--hero2)"/>
+      </linearGradient>
+      <radialGradient id="hglow" cx="0.5" cy="0.5" r="0.5">
+        <stop offset="0" stop-color="var(--accent)" stop-opacity="var(--glow)"/>
+        <stop offset="1" stop-color="var(--accent)" stop-opacity="0"/>
+      </radialGradient>
+      <clipPath id="hr"><rect width="1200" height="400" rx="18"/></clipPath>
+    </defs>
+    <g clip-path="url(#hr)" font-family="-apple-system, 'Helvetica Neue', system-ui, sans-serif">
+      <rect width="1200" height="400" fill="url(#hg)"/>
+      <circle cx="1020" cy="360" r="360" fill="url(#hglow)"/>
+      <circle cx="180" cy="50" r="280" fill="url(#hglow)"/>
+
+      <rect width="1200" height="66" fill="var(--strip)" fill-opacity="var(--strip-o)"/>
+      <rect y="65.5" width="1200" height="1" fill="var(--line)"/>
+
+      <text x="44" y="41" font-size="20" font-weight="600" fill="var(--fg)">ipstyle</text>
+      <g font-size="20" fill="var(--muted)">
+        <text x="124" y="41" data-en="Apps" data-de="Apps">Apps</text>
+        <text x="192" y="41" data-en="Source" data-de="Quellcode">Source</text>
+        <text x="300" y="41" data-en="Privacy" data-de="Datenschutz">Privacy</text>
+      </g>
+
+      <circle cx="876" cy="33" r="11" fill="none" stroke="var(--track)" stroke-width="3.4"/>
+      <circle class="ring-fill" cx="876" cy="33" r="11" fill="none" stroke="var(--accent)"
+              stroke-width="3.4" stroke-linecap="round" transform="rotate(-90 876 33)"/>
+      <text x="896" y="40" font-size="19" fill="var(--fg)">68%</text>
+
+      <rect x="956" y="27" width="32" height="12" rx="6" fill="var(--fg)"/>
+      <rect x="960" y="30.5" width="8" height="5" rx="2.5" fill="var(--knock)"/>
+      <circle cx="977" cy="33" r="2" fill="var(--knock)"/><circle cx="983" cy="33" r="2" fill="var(--knock)"/>
+
+      <rect x="1012" y="25" width="30" height="16" rx="4.5" fill="none" stroke="var(--fg)" stroke-opacity="0.45"/>
+      <rect x="1015" y="28" width="18" height="10" rx="2" fill="var(--fg)"/>
+      <path d="M1045 30v6" stroke="var(--fg)" stroke-opacity="0.45" stroke-width="2.4" stroke-linecap="round"/>
+
+      <g fill="none" stroke="var(--fg)" stroke-width="2.6" stroke-linecap="round">
+        <path d="M1076 30 A 20 20 0 0 1 1108 30"/><path d="M1083 37 A 11 11 0 0 1 1101 37"/>
+      </g>
+      <circle cx="1092" cy="42" r="2.6" fill="var(--fg)"/>
+      <text x="1156" y="40" text-anchor="end" font-size="20" fill="var(--fg)">9:41</text>
+
+      <text x="600" y="252" text-anchor="middle" font-size="130" font-weight="700"
+            letter-spacing="-4.5" fill="var(--fg)">ipstyle</text>
+      <text x="600" y="336" text-anchor="middle" font-size="46" fill="var(--muted)"
+            data-en="native apps for Mac and iPhone"
+            data-de="native Apps für Mac und iPhone">native apps for Mac and iPhone</text>
+    </g>
+  </svg>
+
+  <p class="lede"
+     data-en="Two apps on the Mac App Store, two more on the way. No Electron, no trackers, no accounts — what can run locally, runs locally."
+     data-de="Zwei Apps im Mac App Store, zwei weitere unterwegs. Kein Electron, keine Tracker, keine Konten — was lokal laufen kann, läuft lokal.">Two apps on the Mac App Store, two more on the way. No Electron, no trackers, no accounts — what can run locally, runs locally.</p>
+
+  <div class="badges">
+    <span class="badge" data-en="Switzerland" data-de="Schweiz">Switzerland</span>
+    <span class="badge">macOS 14+</span>
+    <span class="badge" data-en="English &amp; German" data-de="Deutsch &amp; Englisch">English &amp; German</span>
+    <span class="badge" data-en="No accounts, no tracking" data-de="Keine Konten, kein Tracking">No accounts, no tracking</span>
+  </div>
+</header>
+
+<section id="apps">
+  <h2 data-en="Two apps that live in your menu bar" data-de="Zwei Apps, die in der Menüleiste wohnen">Two apps that live in your menu bar</h2>
+  <p class="sub" data-en="Both on the Mac App Store, both fully sandboxed." data-de="Beide im Mac App Store, beide vollständig sandboxed.">Both on the Mac App Store, both fully sandboxed.</p>
+
+  <div class="grid">
+    <article class="app">
+      <img class="icon" src="img/icon-aicockpit.png" alt="AI-Cockpit app icon">
+      <h3>AI-Cockpit</h3>
+      <p class="one" data-en="Every AI budget in one place." data-de="Alle KI-Budgets an einem Ort.">Every AI budget in one place.</p>
+      <ul>
+        <li data-en="Claude subscription usage — 5-hour and weekly windows, with forecasts" data-de="Claude-Abo-Verbrauch — 5-Stunden- und Wochenfenster, mit Prognose">Claude subscription usage — 5-hour and weekly windows, with forecasts</li>
+        <li data-en="ChatGPT/Codex quotas, OpenAI and Anthropic API costs, Kimi credit" data-de="ChatGPT/Codex-Kontingente, OpenAI- und Anthropic-API-Kosten, Kimi-Guthaben">ChatGPT/Codex quotas, OpenAI and Anthropic API costs, Kimi credit</li>
+        <li data-en="Live Claude Code sessions with subagents, token shares and context windows" data-de="Laufende Claude-Code-Sessions mit Subagenten, Token-Anteilen und Kontextfenstern">Live Claude Code sessions with subagents, token shares and context windows</li>
+        <li data-en="Alerts at 75% and 90% — before the window closes on you" data-de="Warnungen bei 75 % und 90 % — bevor das Fenster zugeht">Alerts at 75% and 90% — before the window closes on you</li>
+      </ul>
+      <div class="foot">
+        <a class="mas" href="https://apps.apple.com/app/id6802014255">
+          <img data-badge="aic" src="img/mas-badge-light.svg" alt="Download AI-Cockpit on the Mac App Store">
+        </a>
+        <p class="meta" data-en-html="CHF 3.50, one-time · no subscription, no in-app purchases · &lt;a href=&quot;https://aicockpit.info&quot;&gt;aicockpit.info&lt;/a&gt; · &lt;a href=&quot;https://github.com/ipstyle/ai-cockpit-docs&quot;&gt;Documentation&lt;/a&gt;" data-de-html="CHF 3.50, einmalig · kein Abo, keine In-App-Käufe · &lt;a href=&quot;https://aicockpit.info&quot;&gt;aicockpit.info&lt;/a&gt; · &lt;a href=&quot;https://github.com/ipstyle/ai-cockpit-docs&quot;&gt;Dokumentation&lt;/a&gt;">CHF 3.50, one-time · no subscription, no in-app purchases · <a href="https://aicockpit.info">aicockpit.info</a> · <a href="https://github.com/ipstyle/ai-cockpit-docs">Documentation</a></p>
+      </div>
+    </article>
+
+    <article class="app">
+      <img class="icon" src="img/icon-barbox.png" alt="BarBox app icon">
+      <h3>BarBox</h3>
+      <p class="one" data-en="The menu bar, tidied up." data-de="Die Menüleiste, aufgeräumt.">The menu bar, tidied up.</p>
+      <ul>
+        <li data-en="Live CPU, memory and GPU right in the menu bar" data-de="CPU, Arbeitsspeicher und GPU live in der Menüleiste">Live CPU, memory and GPU right in the menu bar</li>
+        <li data-en="Battery, Wi-Fi, Bluetooth and AirDrop as dropdowns; brightness and volume" data-de="Batterie, WLAN, Bluetooth und AirDrop als Menüs; Helligkeit und Lautstärke">Battery, Wi-Fi, Bluetooth and AirDrop as dropdowns; brightness and volume</li>
+        <li data-en="Image compression, text from image (offline OCR), PDF merge, QR codes, batch rename" data-de="Bilder verkleinern, Text aus Bild (OCR, offline), PDFs zusammenfügen, QR-Codes, Stapel-Umbenennen">Image compression, text from image (offline OCR), PDF merge, QR codes, batch rename</li>
+        <li data-en="Keep awake, timer, passwords, network, Time Machine, weather and rates" data-de="Wachhalten, Timer, Passwörter, Netzwerk, Time Machine, Wetter und Kurse">Keep awake, timer, passwords, network, Time Machine, weather and rates</li>
+      </ul>
+      <div class="foot">
+        <a class="mas" href="https://apps.apple.com/app/id6802093315">
+          <img data-badge="bb" src="img/mas-badge-light.svg" alt="Download BarBox on the Mac App Store">
+        </a>
+        <p class="meta" data-en-html="Free · open source, GPL-3.0 · &lt;a href=&quot;https://github.com/ipstyle/barbox&quot;&gt;Source on GitHub&lt;/a&gt; · &lt;a href=&quot;https://ipstyle.github.io/barbox/&quot;&gt;Website&lt;/a&gt;" data-de-html="Gratis · quelloffen, GPL-3.0 · &lt;a href=&quot;https://github.com/ipstyle/barbox&quot;&gt;Quellcode auf GitHub&lt;/a&gt; · &lt;a href=&quot;https://ipstyle.github.io/barbox/&quot;&gt;Website&lt;/a&gt;">Free · open source, GPL-3.0 · <a href="https://github.com/ipstyle/barbox">Source on GitHub</a> · <a href="https://ipstyle.github.io/barbox/">Website</a></p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="shots">
+  <h2 data-en="What they look like" data-de="Wie sie aussehen">What they look like</h2>
+  <p class="sub" data-en="Scroll sideways. Everything here is a real screenshot, nothing staged." data-de="Seitlich scrollen. Alles echte Screenshots, nichts gestellt.">Scroll sideways. Everything here is a real screenshot, nothing staged.</p>
+  <div class="shots">
+    <figure><img src="img/aic-dashboard.jpg" alt="AI-Cockpit dashboard with all providers side by side"><figcaption data-en="AI-Cockpit · full dashboard" data-de="AI-Cockpit · volle Ansicht">AI-Cockpit · full dashboard</figcaption></figure>
+    <figure><img src="img/aic-compact.jpg" alt="AI-Cockpit collapsed to one-line summaries"><figcaption data-en="AI-Cockpit · collapsed" data-de="AI-Cockpit · eingeklappt">AI-Cockpit · collapsed</figcaption></figure>
+    <figure><img src="img/aic-settings.jpg" alt="AI-Cockpit account settings"><figcaption data-en="AI-Cockpit · accounts" data-de="AI-Cockpit · Konten">AI-Cockpit · accounts</figcaption></figure>
+    <figure><img src="img/bb-dashboard.jpg" alt="BarBox dashboard with stats, controls, tools and weather"><figcaption data-en="BarBox · dashboard" data-de="BarBox · Übersicht">BarBox · dashboard</figcaption></figure>
+    <figure><img src="img/bb-about.jpg" alt="BarBox settings and about screen"><figcaption data-en="BarBox · settings" data-de="BarBox · Einstellungen">BarBox · settings</figcaption></figure>
+  </div>
+</section>
+
+<section id="workshop">
+  <h2 data-en="In the workshop" data-de="In der Werkstatt">In the workshop</h2>
+  <p class="sub" data-en="Not in the Store yet — here is where they stand." data-de="Noch nicht im Store — so weit sind sie.">Not in the Store yet — here is where they stand.</p>
+  <div class="soon">
+    <article>
+      <img data-soon="bm" src="img/soon-baumaengel.svg" alt="Baumängel Tracker: rooms with open defects and a PDF report">
+      <h3>Baumängel Tracker <span class="pill" data-en="In App Review" data-de="Im App-Review">In App Review</span></h3>
+      <p data-en="Snag lists for iPhone — rooms, defects with photo and deadline, tick them off, and hand over a clean PDF report. Everything stays on the device. Open source, MIT." data-de="Mängelprotokoll fürs iPhone — Räume, Mängel mit Foto und Frist, abhaken, und zur Übergabe ein sauberes PDF. Alles bleibt auf dem Gerät. Quelloffen, MIT.">Snag lists for iPhone — rooms, defects with photo and deadline, tick them off, and hand over a clean PDF report. Everything stays on the device. Open source, MIT.</p>
+      <p class="meta"><a href="https://github.com/ipstyle/baumaengel-tracker" data-en="Source on GitHub" data-de="Quellcode auf GitHub">Source on GitHub</a></p>
+    </article>
+    <article>
+      <img data-soon="fw" src="img/soon-fristwart.svg" alt="Fristwart: counts back from a cancellation deadline to the day the letter has to be sent">
+      <h3>Fristwart <span class="pill" data-en="In development" data-de="In Entwicklung">In development</span></h3>
+      <p data-en="Never miss a cancellation deadline. It works backwards from the deadline to the day the letter actually has to go out — built for Swiss households." data-de="Keine Kündigungsfrist mehr verpassen. Rechnet von der Frist zurück auf den Tag, an dem der Brief wirklich raus muss — für Schweizer Haushalte.">Never miss a cancellation deadline. It works backwards from the deadline to the day the letter actually has to go out — built for Swiss households.</p>
+      <p class="meta"><a href="https://ipstyle.github.io/fristwart-web/" data-en="What it does" data-de="Worum es geht">What it does</a></p>
+    </article>
+  </div>
+</section>
+
+<section id="how">
+  <h2 data-en="How I build" data-de="Wie ich baue">How I build</h2>
+  <div class="cols">
+    <div>
+      <h3 data-en="Local first" data-de="Zuerst lokal">Local first</h3>
+      <p data-en="Nothing leaves your device unless you share it yourself. No analytics, no accounts, no ads. Credentials, where any are needed, live in the macOS Keychain and never in a settings file." data-de="Nichts verlässt das Gerät, ausser du teilst es selbst. Keine Analyse, keine Konten, keine Werbung. Zugangsdaten, wo überhaupt welche nötig sind, liegen im Schlüsselbund und nie in einer Einstellungsdatei.">Nothing leaves your device unless you share it yourself. No analytics, no accounts, no ads. Credentials, where any are needed, live in the macOS Keychain and never in a settings file.</p>
+    </div>
+    <div>
+      <h3 data-en="Native, not wrapped" data-de="Nativ, nicht verpackt">Native, not wrapped</h3>
+      <p data-en="Swift and SwiftUI throughout. No Electron, no bundled browser, no 300 MB for a menu bar icon. Both Mac apps ship through the App Store, fully sandboxed." data-de="Durchgehend Swift und SwiftUI. Kein Electron, kein mitgeliefertes Browserfenster, keine 300 MB für ein Menüleisten-Icon. Beide Mac-Apps kommen über den App Store, vollständig sandboxed.">Swift and SwiftUI throughout. No Electron, no bundled browser, no 300 MB for a menu bar icon. Both Mac apps ship through the App Store, fully sandboxed.</p>
+    </div>
+    <div>
+      <h3 data-en="Checked, not assumed" data-de="Geprüft, nicht angenommen">Checked, not assumed</h3>
+      <p data-en="AI-Cockpit was reviewed against OWASP ASVS 4.0, OWASP MASVS, the Apple Secure Coding Guide, RFC 8252/7636 and the CWE Top 25." data-de="AI-Cockpit wurde gegen OWASP ASVS 4.0, OWASP MASVS, den Apple Secure Coding Guide, RFC 8252/7636 und die CWE Top 25 geprüft.">AI-Cockpit was reviewed against OWASP ASVS 4.0, OWASP MASVS, the Apple Secure Coding Guide, RFC 8252/7636 and the CWE Top 25.</p>
+    </div>
+    <div>
+      <h3 data-en="Open where it can be" data-de="Offen, wo es geht">Open where it can be</h3>
+      <p data-en="BarBox and Baumängel Tracker are open source — read them, build them, fork them. AI-Cockpit is proprietary, but its documentation is public." data-de="BarBox und Baumängel Tracker sind quelloffen — lesen, selbst bauen, forken. AI-Cockpit ist proprietär, die Dokumentation dazu aber öffentlich.">BarBox and Baumängel Tracker are open source — read them, build them, fork them. AI-Cockpit is proprietary, but its documentation is public.</p>
+    </div>
+  </div>
+</section>
+
+<section id="support">
+  <h2 data-en="Something broken?" data-de="Etwas kaputt?">Something broken?</h2>
+  <p class="sub" data-en="Open an issue in the repo it belongs to — that is where I read." data-de="Issue im passenden Repo aufmachen — dort lese ich mit.">Open an issue in the repo it belongs to — that is where I read.</p>
+  <p>
+    <a href="https://github.com/ipstyle/ai-cockpit-docs/issues">AI-Cockpit</a> ·
+    <a href="https://github.com/ipstyle/barbox/issues">BarBox</a> ·
+    <a href="https://github.com/ipstyle/baumaengel-tracker/issues">Baumängel Tracker</a>
+  </p>
+  <p class="sub" data-en="Security problems: please use the repository's private reporting feature rather than a public issue." data-de="Sicherheitsprobleme: bitte die private Meldefunktion des Repos nutzen statt eines öffentlichen Issues.">Security problems: please use the repository's private reporting feature rather than a public issue.</p>
+</section>
+
+<footer>
+  <p>© 2026 ipstyle · <a href="https://github.com/ipstyle">github.com/ipstyle</a> · <a href="https://aicockpit.info">aicockpit.info</a></p>
+  <p data-en="Apple, the Apple logo, Mac and the Mac App Store are trademarks of Apple Inc." data-de="Apple, das Apple-Logo, Mac und der Mac App Store sind Marken von Apple Inc.">Apple, the Apple logo, Mac and the Mac App Store are trademarks of Apple Inc.</p>
+</footer>
+</div>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"SoftwareApplication","name":"AI-Cockpit","operatingSystem":"macOS 14","applicationCategory":"DeveloperApplication",
+  "url":"https://aicockpit.info","downloadUrl":"https://apps.apple.com/app/id6802014255",
+  "offers":{"@type":"Offer","price":"3.50","priceCurrency":"CHF"}},
+ {"@type":"SoftwareApplication","name":"BarBox","operatingSystem":"macOS 14","applicationCategory":"UtilitiesApplication",
+  "url":"https://ipstyle.github.io/barbox/","downloadUrl":"https://apps.apple.com/app/id6802093315",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"CHF"}}
+]}
+</script>
+
+<script>
+(function () {
+  var BADGE = {
+    aic: {en: 'img/mas-badge-{t}.svg', de: 'img/mas-badge-de-{t}.svg'},
+    bb:  {en: 'img/mas-badge-{t}.svg', de: 'img/mas-badge-de-{t}.svg'}
+  };
+  var dark = window.matchMedia('(prefers-color-scheme: dark)');
+
+  function paint(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-' + lang + '-html]').forEach(function (el) {
+      el.innerHTML = el.getAttribute('data-' + lang + '-html');
+    });
+    document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
+      el.textContent = el.getAttribute('data-' + lang);
+    });
+    var t = dark.matches ? 'dark' : 'light';
+    document.querySelectorAll('[data-badge]').forEach(function (img) {
+      img.src = BADGE[img.getAttribute('data-badge')][lang].replace('{t}', t);
+    });
+    document.querySelectorAll('[data-soon]').forEach(function (img) {
+      var base = img.getAttribute('data-soon') === 'bm' ? 'soon-baumaengel' : 'soon-fristwart';
+      img.src = 'img/' + base + (lang === 'de' ? '-de' : '') + '.svg';
+    });
+    document.querySelectorAll('.lang button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+    });
+    try { localStorage.setItem('ipstyle-lang', lang); } catch (e) {}
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem('ipstyle-lang'); } catch (e) {}
+  var start = saved || ((navigator.language || 'en').toLowerCase().indexOf('de') === 0 ? 'de' : 'en');
+
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () { paint(b.dataset.lang); });
+  });
+  dark.addEventListener('change', function () { paint(document.documentElement.lang || 'en'); });
+  paint(start);
+})();
+</script>
+</body>
+</html>
