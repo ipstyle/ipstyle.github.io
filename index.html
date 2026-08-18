@@ -249,16 +249,24 @@
   <h2 data-en="How I build" data-de="Wie ich baue">How I build</h2>
   <div class="cols">
     <div>
-      <h3 data-en="Local first" data-de="Zuerst lokal">Local first</h3>
-      <p data-en="Nothing leaves your device unless you share it yourself. No analytics, no accounts, no ads. Credentials, where any are needed, live in the macOS Keychain and never in a settings file." data-de="Nichts verlässt das Gerät, ausser du teilst es selbst. Keine Analyse, keine Konten, keine Werbung. Zugangsdaten, wo überhaupt welche nötig sind, liegen im Schlüsselbund und nie in einer Einstellungsdatei.">Nothing leaves your device unless you share it yourself. No analytics, no accounts, no ads. Credentials, where any are needed, live in the macOS Keychain and never in a settings file.</p>
+      <h3 data-en="At rest" data-de="Ruhend gespeichert">At rest</h3>
+      <p data-en="API keys and sign-ins live only in the macOS Keychain — encrypted by the OS, tied to this device, never synced to iCloud. Nothing sensitive ever touches a settings file, a database or a log." data-de="API-Schlüssel und Anmeldungen liegen ausschliesslich im macOS-Schlüsselbund — vom Betriebssystem verschlüsselt, an dieses Gerät gebunden, nie mit iCloud synchronisiert. Nichts Sensibles landet in einer Einstellungsdatei, einer Datenbank oder einem Log.">API keys and sign-ins live only in the macOS Keychain — encrypted by the OS, tied to this device, never synced to iCloud. Nothing sensitive ever touches a settings file, a database or a log.</p>
     </div>
     <div>
-      <h3 data-en="Native, not wrapped" data-de="Nativ, nicht verpackt">Native, not wrapped</h3>
-      <p data-en="Swift and SwiftUI throughout. No Electron, no bundled browser, no 300 MB for a menu bar icon. Both Mac apps ship through the App Store, fully sandboxed." data-de="Durchgehend Swift und SwiftUI. Kein Electron, kein mitgeliefertes Browserfenster, keine 300 MB für ein Menüleisten-Icon. Beide Mac-Apps kommen über den App Store, vollständig sandboxed.">Swift and SwiftUI throughout. No Electron, no bundled browser, no 300 MB for a menu bar icon. Both Mac apps ship through the App Store, fully sandboxed.</p>
+      <h3 data-en="In transit" data-de="Auf dem Weg">In transit</h3>
+      <p data-en="Every connection goes over HTTPS to a fixed, published allowlist of hosts — nothing else, and redirects are never followed. Both apps name every host in their privacy notes; check for yourself rather than trusting a summary." data-de="Jede Verbindung läuft über HTTPS zu einer festen, veröffentlichten Liste von Servern — sonst nichts, Weiterleitungen werden nie befolgt. Beide Apps nennen jeden Server namentlich in ihren Datenschutzhinweisen — selbst nachlesen statt einer Zusammenfassung glauben.">Every connection goes over HTTPS to a fixed, published allowlist of hosts — nothing else, and redirects are never followed. Both apps name every host in their privacy notes; check for yourself rather than trusting a summary.</p>
+    </div>
+    <div>
+      <h3 data-en="Yours to keep" data-de="Bleibt deins">Yours to keep</h3>
+      <p data-en="Usage history exports as HTML or CSV whenever you want, and clears just as easily from Settings. Nothing sits behind a login only I control — it's your file." data-de="Der Nutzungsverlauf lässt sich jederzeit als HTML oder CSV exportieren und genauso leicht in den Einstellungen löschen. Nichts liegt hinter einem Login, den nur ich kontrolliere — es ist deine Datei.">Usage history exports as HTML or CSV whenever you want, and clears just as easily from Settings. Nothing sits behind a login only I control — it's your file.</p>
     </div>
     <div>
       <h3 data-en="Checked, not assumed" data-de="Geprüft, nicht angenommen">Checked, not assumed</h3>
       <p data-en="AI-Cockpit was reviewed against OWASP ASVS 4.0, OWASP MASVS, the Apple Secure Coding Guide, RFC 8252/7636 and the CWE Top 25." data-de="AI-Cockpit wurde gegen OWASP ASVS 4.0, OWASP MASVS, den Apple Secure Coding Guide, RFC 8252/7636 und die CWE Top 25 geprüft.">AI-Cockpit was reviewed against OWASP ASVS 4.0, OWASP MASVS, the Apple Secure Coding Guide, RFC 8252/7636 and the CWE Top 25.</p>
+    </div>
+    <div>
+      <h3 data-en="Native, not wrapped" data-de="Nativ, nicht verpackt">Native, not wrapped</h3>
+      <p data-en="Swift and SwiftUI throughout. No Electron, no bundled browser, no 300 MB for a menu bar icon. Both Mac apps ship through the App Store, fully sandboxed." data-de="Durchgehend Swift und SwiftUI. Kein Electron, kein mitgeliefertes Browserfenster, keine 300 MB für ein Menüleisten-Icon. Beide Mac-Apps kommen über den App Store, vollständig sandboxed.">Swift and SwiftUI throughout. No Electron, no bundled browser, no 300 MB for a menu bar icon. Both Mac apps ship through the App Store, fully sandboxed.</p>
     </div>
     <div>
       <h3 data-en="Open where it can be" data-de="Offen, wo es geht">Open where it can be</h3>
