@@ -53,6 +53,14 @@
   .badge { font-size:.8rem; color:var(--muted); border:1px solid var(--line);
            border-radius:999px; padding:.25rem .8rem; }
 
+  .trust { display:flex; flex-wrap:wrap; gap:.55rem; justify-content:center; margin:0; }
+  .trust-pill { display:inline-flex; align-items:center; gap:.5rem;
+                background:var(--card); border:1px solid var(--line); border-radius:999px;
+                padding:.4rem .95rem .4rem .5rem; font-size:.86rem; font-weight:600; color:var(--fg); }
+  .trust-pill svg { width:19px; height:19px; flex:0 0 auto; }
+  .trust-pill svg circle { fill:var(--accent); }
+  .trust-pill svg path { fill:none; stroke:var(--accent-fg); stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+
   /* sections */
   section { padding:2.6rem 0; border-top:1px solid var(--line); }
   h2 { font-size:1.5rem; letter-spacing:-.02em; margin:0 0 .4rem; }
@@ -91,6 +99,9 @@
   .cols { display:grid; gap:1.25rem 2rem; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); }
   .cols h3 { font-size:1rem; margin:0 0 .3rem; }
   .cols p { color:var(--muted); margin:0; font-size:.94rem; }
+
+  code { background:var(--card); border:1px solid var(--line); border-radius:5px;
+         padding:.05rem .3rem; font-size:.88em; }
 
   footer { border-top:1px solid var(--line); padding:2rem 0 3rem; color:var(--muted); font-size:.85rem; }
   footer a { color:var(--muted); }
@@ -168,6 +179,29 @@
     <span class="badge">macOS 14+</span>
     <span class="badge" data-en="English &amp; German" data-de="Deutsch &amp; Englisch">English &amp; German</span>
     <span class="badge" data-en="No accounts, no tracking" data-de="Keine Konten, kein Tracking">No accounts, no tracking</span>
+  </div>
+
+  <div class="trust" role="list" aria-label="Security commitments">
+    <span class="trust-pill" role="listitem">
+      <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9"/><path d="M5.2 9.2l2.3 2.3 5.3-5.5"/></svg>
+      <span data-en="Mac App Store — Sandboxed" data-de="Mac App Store — Sandboxed">Mac App Store — Sandboxed</span>
+    </span>
+    <span class="trust-pill" role="listitem">
+      <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9"/><path d="M5.2 9.2l2.3 2.3 5.3-5.5"/></svg>
+      <span data-en="No Analytics · No Accounts · No Ads" data-de="Keine Analyse · Keine Konten · Keine Werbung">No Analytics · No Accounts · No Ads</span>
+    </span>
+    <span class="trust-pill" role="listitem">
+      <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9"/><path d="M5.2 9.2l2.3 2.3 5.3-5.5"/></svg>
+      <span>OWASP ASVS 4.0 · MASVS</span>
+    </span>
+    <span class="trust-pill" role="listitem">
+      <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9"/><path d="M5.2 9.2l2.3 2.3 5.3-5.5"/></svg>
+      <span>Apple Secure Coding Guide</span>
+    </span>
+    <span class="trust-pill" role="listitem">
+      <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9"/><path d="M5.2 9.2l2.3 2.3 5.3-5.5"/></svg>
+      <span>RFC 8252/7636 · CWE Top 25</span>
+    </span>
   </div>
 </header>
 
@@ -270,7 +304,7 @@
     </div>
     <div>
       <h3 data-en="Open where it can be" data-de="Offen, wo es geht">Open where it can be</h3>
-      <p data-en="BarBox and Baumängel Tracker are open source — read them, build them, fork them. AI-Cockpit is proprietary, but its documentation is public." data-de="BarBox und Baumängel Tracker sind quelloffen — lesen, selbst bauen, forken. AI-Cockpit ist proprietär, die Dokumentation dazu aber öffentlich.">BarBox and Baumängel Tracker are open source — read them, build them, fork them. AI-Cockpit is proprietary, but its documentation is public.</p>
+      <p data-en-html="BarBox (GPL-3.0) and Baumängel Tracker (MIT) are open source — so you don't have to take my word for any of this: the network code is public. Build it yourself with &lt;code&gt;swift build -c release&lt;/code&gt;. AI-Cockpit is proprietary, but its documentation is public." data-de-html="BarBox (GPL-3.0) und Baumängel Tracker (MIT) sind quelloffen — du musst mir also nichts davon glauben: der Netzwerkcode ist öffentlich. Selbst bauen mit &lt;code&gt;swift build -c release&lt;/code&gt;. AI-Cockpit ist proprietär, die Dokumentation dazu aber öffentlich.">BarBox (GPL-3.0) and Baumängel Tracker (MIT) are open source — so you don't have to take my word for any of this: the network code is public. Build it yourself with <code>swift build -c release</code>. AI-Cockpit is proprietary, but its documentation is public.</p>
     </div>
   </div>
 </section>
