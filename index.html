@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ipstyle — native apps for Mac and iPhone</title>
-<meta name="description" content="Small, native apps for Mac and iPhone by Albert Frick: AI-Cockpit keeps every AI budget in one place, BarBox tidies up the menu bar. No accounts, no tracking — what can run locally, runs locally.">
+<meta name="description" content="Small, native apps for Mac and iPhone by Albert Frick: AI-Cockpit keeps every AI budget in one place, BarBox tidies up the menu bar, Baumängel Tracker documents snag lists on iPhone. No accounts, no tracking — what can run locally, runs locally.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ipstyle — native apps for Mac and iPhone">
-<meta property="og:description" content="AI-Cockpit and BarBox on the Mac App Store. No accounts, no tracking.">
+<meta property="og:description" content="AI-Cockpit and BarBox on the Mac App Store, Baumängel Tracker on the iOS App Store. No accounts, no tracking.">
 <meta property="og:url" content="https://ipstyle.github.io/">
 <meta name="twitter:card" content="summary_large_image">
 <style>
@@ -79,7 +79,7 @@
   .app .foot { margin-top:auto; }
   .app .meta { font-size:.82rem; color:var(--muted); margin:.7rem 0 0; }
   .mas { display:inline-block; }
-  .mas img { width:156px; height:auto; display:block; }
+  .mas img { height:40px; width:auto; display:block; }
 
   /* screenshots */
   .shots { display:flex; gap:1rem; overflow-x:auto; padding-bottom:.6rem; scroll-snap-type:x mandatory; }
@@ -171,12 +171,12 @@
   </svg>
 
   <p class="lede"
-     data-en="Two apps on the Mac App Store, two more on the way. No Electron, no trackers, no accounts — what can run locally, runs locally."
-     data-de="Zwei Apps im Mac App Store, zwei weitere unterwegs. Kein Electron, keine Tracker, keine Konten — was lokal laufen kann, läuft lokal.">Two apps on the Mac App Store, two more on the way. No Electron, no trackers, no accounts — what can run locally, runs locally.</p>
+     data-en="Three apps live — on the Mac App Store and the iOS App Store. More on the way. No Electron, no trackers, no accounts — what can run locally, runs locally."
+     data-de="Drei Apps live — im Mac App Store und im iOS App Store. Weitere unterwegs. Kein Electron, keine Tracker, keine Konten — was lokal laufen kann, läuft lokal.">Three apps live — on the Mac App Store and the iOS App Store. More on the way. No Electron, no trackers, no accounts — what can run locally, runs locally.</p>
 
   <div class="badges">
     <span class="badge" data-en="Switzerland" data-de="Schweiz">Switzerland</span>
-    <span class="badge">macOS 14+</span>
+    <span class="badge">macOS 14+ · iOS 17+</span>
     <span class="badge" data-en="English &amp; German" data-de="Deutsch &amp; Englisch">English &amp; German</span>
     <span class="badge" data-en="No accounts, no tracking" data-de="Keine Konten, kein Tracking">No accounts, no tracking</span>
   </div>
@@ -184,7 +184,7 @@
   <div class="trust" role="list" aria-label="Security commitments">
     <span class="trust-pill" role="listitem">
       <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9"/><path d="M5.2 9.2l2.3 2.3 5.3-5.5"/></svg>
-      <span data-en="Mac App Store — Sandboxed" data-de="Mac App Store — Sandboxed">Mac App Store — Sandboxed</span>
+      <span data-en="App Store — Sandboxed" data-de="App Store — Sandboxed">App Store — Sandboxed</span>
     </span>
     <span class="trust-pill" role="listitem">
       <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9"/><path d="M5.2 9.2l2.3 2.3 5.3-5.5"/></svg>
@@ -206,8 +206,8 @@
 </header>
 
 <section id="apps">
-  <h2 data-en="Two apps that live in your menu bar" data-de="Zwei Apps, die in der Menüleiste wohnen">Two apps that live in your menu bar</h2>
-  <p class="sub" data-en="Both on the Mac App Store, both fully sandboxed." data-de="Beide im Mac App Store, beide vollständig sandboxed.">Both on the Mac App Store, both fully sandboxed.</p>
+  <h2 data-en="Three apps, live now" data-de="Drei Apps, jetzt live">Three apps, live now</h2>
+  <p class="sub" data-en="Two in the Mac menu bar, one on iPhone — all fully sandboxed." data-de="Zwei in der Mac-Menüleiste, eine auf dem iPhone — alle vollständig sandboxed.">Two in the Mac menu bar, one on iPhone — all fully sandboxed.</p>
 
   <div class="grid">
     <article class="app">
@@ -245,6 +245,24 @@
         <p class="meta" data-en-html="Free · open source, GPL-3.0 · &lt;a href=&quot;https://github.com/ipstyle/barbox&quot;&gt;Source on GitHub&lt;/a&gt; · &lt;a href=&quot;https://ipstyle.github.io/barbox/&quot;&gt;Website&lt;/a&gt;" data-de-html="Gratis · quelloffen, GPL-3.0 · &lt;a href=&quot;https://github.com/ipstyle/barbox&quot;&gt;Quellcode auf GitHub&lt;/a&gt; · &lt;a href=&quot;https://ipstyle.github.io/barbox/&quot;&gt;Website&lt;/a&gt;">Free · open source, GPL-3.0 · <a href="https://github.com/ipstyle/barbox">Source on GitHub</a> · <a href="https://ipstyle.github.io/barbox/">Website</a></p>
       </div>
     </article>
+
+    <article class="app">
+      <img class="icon" src="img/icon-baumaengel.png" alt="Baumängel Tracker app icon">
+      <h3>Baumängel Tracker</h3>
+      <p class="one" data-en="Snag lists for iPhone, handed over as a PDF." data-de="Mängelprotokoll fürs iPhone, übergeben als PDF.">Snag lists for iPhone, handed over as a PDF.</p>
+      <ul>
+        <li data-en="Rooms and defects with photo and deadline, ticked off as you go" data-de="Räume und Mängel mit Foto und Frist, laufend abgehakt">Rooms and defects with photo and deadline, ticked off as you go</li>
+        <li data-en="Clean PDF report at handover, ready to share" data-de="Sauberes PDF-Protokoll zur Übergabe, teilbereit">Clean PDF report at handover, ready to share</li>
+        <li data-en="Everything stays on the device — no account, no network access" data-de="Alles bleibt auf dem Gerät — kein Konto, kein Netzwerkzugriff">Everything stays on the device — no account, no network access</li>
+        <li data-en="Open source, MIT" data-de="Quelloffen, MIT">Open source, MIT</li>
+      </ul>
+      <div class="foot">
+        <a class="mas" href="https://apps.apple.com/app/id6802430409">
+          <img src="img/ios-badge.svg" alt="Download Baumängel Tracker on the App Store">
+        </a>
+        <p class="meta" data-en-html="Free · iOS 17+ · open source, MIT · &lt;a href=&quot;https://github.com/ipstyle/baumaengel-tracker&quot;&gt;Source on GitHub&lt;/a&gt; · &lt;a href=&quot;https://ipstyle.github.io/baumaengel-tracker/&quot;&gt;Website&lt;/a&gt;" data-de-html="Gratis · iOS 17+ · quelloffen, MIT · &lt;a href=&quot;https://github.com/ipstyle/baumaengel-tracker&quot;&gt;Quellcode auf GitHub&lt;/a&gt; · &lt;a href=&quot;https://ipstyle.github.io/baumaengel-tracker/&quot;&gt;Website&lt;/a&gt;">Free · iOS 17+ · open source, MIT · <a href="https://github.com/ipstyle/baumaengel-tracker">Source on GitHub</a> · <a href="https://ipstyle.github.io/baumaengel-tracker/">Website</a></p>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -257,6 +275,9 @@
     <figure><img src="img/aic-settings.jpg" alt="AI-Cockpit account settings"><figcaption data-en="AI-Cockpit · accounts" data-de="AI-Cockpit · Konten">AI-Cockpit · accounts</figcaption></figure>
     <figure><img src="img/bb-dashboard.jpg" alt="BarBox dashboard with stats, controls, tools and weather"><figcaption data-en="BarBox · dashboard" data-de="BarBox · Übersicht">BarBox · dashboard</figcaption></figure>
     <figure><img src="img/bb-about.jpg" alt="BarBox settings and about screen"><figcaption data-en="BarBox · settings" data-de="BarBox · Einstellungen">BarBox · settings</figcaption></figure>
+    <figure><img src="img/bm-projekte.jpg" alt="Baumängel Tracker project list"><figcaption data-en="Baumängel Tracker · projects" data-de="Baumängel Tracker · Projekte">Baumängel Tracker · projects</figcaption></figure>
+    <figure><img src="img/bm-maengel.jpg" alt="Baumängel Tracker defect list for one room"><figcaption data-en="Baumängel Tracker · defects" data-de="Baumängel Tracker · Mängel">Baumängel Tracker · defects</figcaption></figure>
+    <figure><img src="img/bm-pdf.jpg" alt="Baumängel Tracker PDF report"><figcaption data-en="Baumängel Tracker · PDF report" data-de="Baumängel Tracker · PDF-Protokoll">Baumängel Tracker · PDF report</figcaption></figure>
   </div>
 </section>
 
@@ -265,10 +286,10 @@
   <p class="sub" data-en="Not in the Store yet — here is where they stand." data-de="Noch nicht im Store — so weit sind sie.">Not in the Store yet — here is where they stand.</p>
   <div class="soon">
     <article>
-      <img data-soon="bm" src="img/soon-baumaengel.svg" alt="Baumängel Tracker: rooms with open defects and a PDF report">
-      <h3>Baumängel Tracker <span class="pill" data-en="In App Review" data-de="Im App-Review">In App Review</span></h3>
-      <p data-en="Snag lists for iPhone — rooms, defects with photo and deadline, tick them off, and hand over a clean PDF report. Everything stays on the device. Open source, MIT." data-de="Mängelprotokoll fürs iPhone — Räume, Mängel mit Foto und Frist, abhaken, und zur Übergabe ein sauberes PDF. Alles bleibt auf dem Gerät. Quelloffen, MIT.">Snag lists for iPhone — rooms, defects with photo and deadline, tick them off, and hand over a clean PDF report. Everything stays on the device. Open source, MIT.</p>
-      <p class="meta"><a href="https://ipstyle.github.io/baumaengel-tracker/" data-en="What it does" data-de="Worum es geht">What it does</a></p>
+      <img data-soon="aicm" src="img/soon-aicockpit-mobile.svg" alt="AI Cockpit Mobile: Home Screen widgets, one line per provider">
+      <h3>AI Cockpit Mobile <span class="pill" data-en="Coming soon" data-de="Bald verfügbar">Coming soon</span></h3>
+      <p data-en="The same AI budgets as the Mac app, fetched by your iPhone itself — five cards, plus Home Screen widgets, Lock Screen and StandBy tiles. Free, no subscription." data-de="Dieselben KI-Budgets wie in der Mac-App, direkt vom iPhone abgerufen — fünf Karten, dazu Homescreen-Widgets, Sperrbildschirm- und StandBy-Kacheln. Gratis, kein Abo.">The same AI budgets as the Mac app, fetched by your iPhone itself — five cards, plus Home Screen widgets, Lock Screen and StandBy tiles. Free, no subscription.</p>
+      <p class="meta"><a href="https://aicockpit.info/#ios" data-en="What it does" data-de="Worum es geht">What it does</a></p>
     </article>
     <article>
       <img data-soon="fw" src="img/soon-fristwart.svg" alt="Fristwart: counts back from a cancellation deadline to the day the letter has to be sent">
@@ -288,7 +309,7 @@
     </div>
     <div>
       <h3 data-en="In transit" data-de="Auf dem Weg">In transit</h3>
-      <p data-en="Every connection goes over HTTPS to a fixed, published allowlist of hosts — nothing else, and redirects are never followed. Both apps name every host in their privacy notes; check for yourself rather than trusting a summary." data-de="Jede Verbindung läuft über HTTPS zu einer festen, veröffentlichten Liste von Servern — sonst nichts, Weiterleitungen werden nie befolgt. Beide Apps nennen jeden Server namentlich in ihren Datenschutzhinweisen — selbst nachlesen statt einer Zusammenfassung glauben.">Every connection goes over HTTPS to a fixed, published allowlist of hosts — nothing else, and redirects are never followed. Both apps name every host in their privacy notes; check for yourself rather than trusting a summary.</p>
+      <p data-en="AI-Cockpit and BarBox connect over HTTPS to a fixed, published allowlist of hosts — nothing else, redirects never followed. Baumängel Tracker makes no network connection at all. Every host is named in each app's privacy notes; check for yourself rather than trusting a summary." data-de="AI-Cockpit und BarBox verbinden sich über HTTPS zu einer festen, veröffentlichten Liste von Servern — sonst nichts, Weiterleitungen werden nie befolgt. Baumängel Tracker stellt gar keine Netzwerkverbindung her. Jeder Server steht namentlich in den Datenschutzhinweisen der jeweiligen App — selbst nachlesen statt einer Zusammenfassung glauben.">AI-Cockpit and BarBox connect over HTTPS to a fixed, published allowlist of hosts — nothing else, redirects never followed. Baumängel Tracker makes no network connection at all. Every host is named in each app's privacy notes; check for yourself rather than trusting a summary.</p>
     </div>
     <div>
       <h3 data-en="Yours to keep" data-de="Bleibt deins">Yours to keep</h3>
@@ -300,7 +321,7 @@
     </div>
     <div>
       <h3 data-en="Native, not wrapped" data-de="Nativ, nicht verpackt">Native, not wrapped</h3>
-      <p data-en="Swift and SwiftUI throughout. No Electron, no bundled browser, no 300 MB for a menu bar icon. Both Mac apps ship through the App Store, fully sandboxed." data-de="Durchgehend Swift und SwiftUI. Kein Electron, kein mitgeliefertes Browserfenster, keine 300 MB für ein Menüleisten-Icon. Beide Mac-Apps kommen über den App Store, vollständig sandboxed.">Swift and SwiftUI throughout. No Electron, no bundled browser, no 300 MB for a menu bar icon. Both Mac apps ship through the App Store, fully sandboxed.</p>
+      <p data-en="Swift and SwiftUI throughout. No Electron, no bundled browser, no 300 MB for a menu bar icon. All three apps ship through the App Store, fully sandboxed." data-de="Durchgehend Swift und SwiftUI. Kein Electron, kein mitgeliefertes Browserfenster, keine 300 MB für ein Menüleisten-Icon. Alle drei Apps kommen über den App Store, vollständig sandboxed.">Swift and SwiftUI throughout. No Electron, no bundled browser, no 300 MB for a menu bar icon. All three apps ship through the App Store, fully sandboxed.</p>
     </div>
     <div>
       <h3 data-en="Open where it can be" data-de="Offen, wo es geht">Open where it can be</h3>
@@ -333,6 +354,9 @@
   "offers":{"@type":"Offer","price":"3.50","priceCurrency":"CHF"}},
  {"@type":"SoftwareApplication","name":"BarBox","operatingSystem":"macOS 14","applicationCategory":"UtilitiesApplication",
   "url":"https://ipstyle.github.io/barbox/","downloadUrl":"https://apps.apple.com/app/id6802093315",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"CHF"}},
+ {"@type":"SoftwareApplication","name":"Baumängel Tracker","operatingSystem":"iOS 17","applicationCategory":"UtilitiesApplication",
+  "url":"https://ipstyle.github.io/baumaengel-tracker/","downloadUrl":"https://apps.apple.com/app/id6802430409",
   "offers":{"@type":"Offer","price":"0","priceCurrency":"CHF"}}
 ]}
 </script>
@@ -343,6 +367,7 @@
     aic: {en: 'img/mas-badge-{t}.svg', de: 'img/mas-badge-de-{t}.svg'},
     bb:  {en: 'img/mas-badge-{t}.svg', de: 'img/mas-badge-de-{t}.svg'}
   };
+  var SOON = { aicm: 'soon-aicockpit-mobile', fw: 'soon-fristwart' };
   var dark = window.matchMedia('(prefers-color-scheme: dark)');
 
   function paint(lang) {
@@ -358,7 +383,7 @@
       img.src = BADGE[img.getAttribute('data-badge')][lang].replace('{t}', t);
     });
     document.querySelectorAll('[data-soon]').forEach(function (img) {
-      var base = img.getAttribute('data-soon') === 'bm' ? 'soon-baumaengel' : 'soon-fristwart';
+      var base = SOON[img.getAttribute('data-soon')];
       img.src = 'img/' + base + (lang === 'de' ? '-de' : '') + '.svg';
     });
     document.querySelectorAll('.lang button').forEach(function (b) {
